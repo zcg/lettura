@@ -4,7 +4,7 @@ on: [push]
 jobs:
   package linux packages and upload packages:
     runs-on: ubuntu-latest
-    jobs:
+    steps:
     - uses: actions/checkout@v2
       - name: Install latest rust
         uses: actions-rs/toolchain@v1
