@@ -5,7 +5,6 @@ jobs:
   package linux packages and upload packages:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
       - name: Install latest rust
         uses: actions-rs/toolchain@v1
         with:
@@ -18,18 +17,18 @@ jobs:
                        sudo nala upgrade -y
                        sudo nala install libwebkit2gtk-4.0-dev build-essential curl wget libssl-dev libgtk-3-dev libappindicator3-dev librsvg2-dev  libjavascriptcoregtk-4.0-18 libsoup2.4-dev -y
 
-          - name: packaging linux packages
-                run: yarn tauri build
-
-
-          - name: upload  AppImage
-          - uses: actions/upload-artifact@v3
-            with:
-              name: linux-packages
-              path: src-tauri/target/release/bundle/appimage/*.AppImage
-
-          - name: upload  deb
-          - uses: actions/upload-artifact@v3
-            with:
-              name: linux-packages
+      - name: packaging linux packages
+            run: yarn tauri build
+  
+  
+      - name: upload  AppImage
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux-packages
+          path: src-tauri/target/release/bundle/appimage/*.AppImage
+  
+      - name: upload  deb
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux-packages
               path: src-tauri/target/release/bundle/deb/*.deb
